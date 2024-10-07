@@ -9,18 +9,21 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.bean.Disciplina;
+import model.dao.DisciplinaDAO;
 
 /**
  *
  * @author Senai
  */
-@WebServlet(name = "HomeController", urlPatterns = {"/HomeController","/ola"})
+@WebServlet(name = "HomeController", urlPatterns = {"/HomeController","/ola", "/disciplinas"})
 public class HomeController extends HttpServlet {
     Gson conversor = new Gson();
     /**
@@ -71,6 +74,15 @@ public class HomeController extends HttpServlet {
            PrintWriter out = response.getWriter();
            out.write(conversor.toJson(res));
            out.flush();
+       } else if (url.equals ("/disciplinas")){
+           response.setContentType("application/JSON");
+           response.setCharacterEncoding("UTF-8");
+           Map<String, List<Disciplina>> res = new HashMap <String, List<Disciplina>>();
+           res.put("disciplinas", new DisciplinaDAO().lerDisciplinas());
+           PrintWriter out = response.getWriter();
+           out.write(conversor.toJson(res));
+           out.flush();//envia informacao
+           
        }
         
         

@@ -14,12 +14,12 @@ import java.util.List;
 public class Disciplina {
     private int id_disciplina, area_id;
     private String nome_disciplina;
-    private List<Area> areas;
+    private Area areas;
 
     public Disciplina() {
     }
 
-    public Disciplina(int id_disciplina, int area_id, String nome_disciplina, List<Area> areas) {
+    public Disciplina(int id_disciplina, int area_id, String nome_disciplina, Area areas) {
         this.id_disciplina = id_disciplina;
         this.area_id = area_id;
         this.nome_disciplina = nome_disciplina;
@@ -50,15 +50,12 @@ public class Disciplina {
         this.nome_disciplina = nome_disciplina;
     }
 
-    public List<Area> getAreas() {
+    public Area getAreas() {
         return areas;
     }
 
-    public void setAreas(List<Area> areas) {
+    public void setAreas(Area areas) {
         this.areas = areas;
     }
-    
-    
-    
     
 }
