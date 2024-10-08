@@ -12,18 +12,17 @@ import java.util.List;
  * @author Senai
  */
 public class Disciplina {
-    private int id_disciplina, area_id;
+    private int id_disciplina;
     private String nome_disciplina;
-    private Area areas;
+    private Area area;
 
     public Disciplina() {
     }
 
-    public Disciplina(int id_disciplina, int area_id, String nome_disciplina, Area areas) {
+    public Disciplina(int id_disciplina, String nome_disciplina, Area area) {
         this.id_disciplina = id_disciplina;
-        this.area_id = area_id;
         this.nome_disciplina = nome_disciplina;
-        this.areas = areas;
+        this.area = area;
     }
 
     public int getId_disciplina() {
@@ -34,14 +33,6 @@ public class Disciplina {
         this.id_disciplina = id_disciplina;
     }
 
-    public int getArea_id() {
-        return area_id;
-    }
-
-    public void setArea_id(int area_id) {
-        this.area_id = area_id;
-    }
-
     public String getNome_disciplina() {
         return nome_disciplina;
     }
@@ -50,12 +41,13 @@ public class Disciplina {
         this.nome_disciplina = nome_disciplina;
     }
 
-    public Area getAreas() {
-        return areas;
+    public Area getArea() {
+        return area;
     }
 
-    public void setAreas(Area areas) {
-        this.areas = areas;
+    public void setArea(Area area) {
+        this.area = area;
     }
+
     
 }

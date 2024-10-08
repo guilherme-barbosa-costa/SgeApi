@@ -11,23 +11,22 @@ import java.util.List;
  *
  * @author Senai
  */
-public class Professores {
-    private int id_professor;
-    private String nome, sobrenome, usuario, senha;
-    private List<Area> areas;
-    private List<Disciplina> disciplinas;
+public class Professor {
+     private int id_professor;
+    private String nome, sobrenome,senha, cpf, imagem;
+    private List<Disciplina> disciplina;
 
-    public Professores() {
+    public Professor() {
     }
 
-    public Professores(int id_professor, String nome, String sobrenome, String usuario, String senha, List<Area> areas, List<Disciplina> disciplinas) {
+    public Professor(int id_professor, String nome, String sobrenome, String senha, String cpf, String imagem, List<Disciplina> disciplina) {
         this.id_professor = id_professor;
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.usuario = usuario;
         this.senha = senha;
-        this.areas = areas;
-        this.disciplinas = disciplinas;
+        this.cpf = cpf;
+        this.imagem = imagem;
+        this.disciplina = disciplina;
     }
 
     public int getId_professor() {
@@ -54,14 +53,6 @@ public class Professores {
         this.sobrenome = sobrenome;
     }
 
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
     public String getSenha() {
         return senha;
     }
@@ -70,24 +61,29 @@ public class Professores {
         this.senha = senha;
     }
 
-    public List<Area> getAreas() {
-        return areas;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setAreas(List<Area> areas) {
-        this.areas = areas;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public List<Disciplina> getDisciplinas() {
-        return disciplinas;
+    public String getImagem() {
+        return imagem;
     }
 
-    public void setDisciplinas(List<Disciplina> disciplinas) {
-        this.disciplinas = disciplinas;
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
-   
+    public List<Disciplina> getDisciplina() {
+        return disciplina;
+    }
 
-   
+    public void setDisciplina(List<Disciplina> disciplina) {
+        this.disciplina = disciplina;
+    }
+    
     
 }

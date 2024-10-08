@@ -13,7 +13,7 @@ import java.sql.DriverManager;
  * @author Senai
  */
 public class Conexao {
-    private static final String url = "jdbc:mysql://locahost:3306/projeto_sge";
+    private static final String url = "jdbc:mysql://localhost:3306/api_sge";
     private static final String user = "root";
     private static final String pass = "";
     

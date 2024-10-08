@@ -13,15 +13,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.bean.Disciplina;
-import model.bean.Professores;
+import model.bean.Professor;
 
 /**
  *
  * @author Senai
  */
 public class ProfessoresDAO {
-   public List<Professores> ler() {
-        List<Professores> professores = new ArrayList<>();
+   public List<Professor> lerProfessores() {
+        List<Professor> professores = new ArrayList<>();
         
         try{
             Connection conexao = Conexao.conectar();
@@ -32,15 +32,17 @@ public class ProfessoresDAO {
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                Professores professor = new Professores();
-                professor.setId_professor(rs.getInt("id_professor"));
-                professor.setNome(rs.getString("nome"));
-                professor.setSenha(rs.getString("sobrenome"));
-                professor.setUsuario(rs.getString("usuario"));
-                professor.setSenha(rs.getString("senha"));
+                Professor prof = new Professor();
+                prof.setId_professor(rs.getInt("id_professor"));
+                prof.setNome(rs.getString("nome"));
+                prof.setSobrenome(rs.getString("sobrenome"));
+                prof.setSenha(rs.getString("senha"));
+                prof.setCpf(rs.getString("cpf"));
+                prof.setImagem("imagem");
                 
                 
-                professores.add(professor);
+                
+                professores.add(prof);
             }
             rs.close();
             stmt.close();
