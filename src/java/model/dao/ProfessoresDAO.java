@@ -20,75 +20,74 @@ import model.bean.Professor;
  * @author Senai
  */
 public class ProfessoresDAO {
-   public List<Professor> lerProfessores() {
+
+    public List<Professor> lerProfessores() {
         List<Professor> professores = new ArrayList<>();
-        
-        try{
+
+        try {
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
-            ResultSet   rs = null;
-            
+            ResultSet rs = null;
+
             stmt = conexao.prepareStatement("select * from professor");
             rs = stmt.executeQuery();
-            
-            while(rs.next()){
-                Professor prof = new Professor();
-                prof.setId_professor(rs.getInt("id_professor"));
-                prof.setNome(rs.getString("nome"));
-                prof.setSobrenome(rs.getString("sobrenome"));
-                prof.setSenha(rs.getString("senha"));
-                prof.setCpf(rs.getString("cpf"));
-                prof.setImagem("imagem");
-                
-                
-                
-                professores.add(prof);
+
+            while (rs.next()) {
+                Professor professor = new Professor();
+                professor.setId_professor(rs.getInt("id_professor"));
+                professor.setNome(rs.getString("nome"));
+                professor.setSobrenome(rs.getString("sobrenome"));
+                professor.setCpf(rs.getString("cpf"));
+                professor.setImagem(rs.getString("imagem"));
+                professor.setDisciplina(
+                        new DisciplinaDAO()
+                        .lerDisciplinasProfessores
+                        (rs.getInt("id_professor"))
+                );
+                professores.add(professor);
             }
             rs.close();
             stmt.close();
             conexao.close();
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
-            
+
         }
         return professores;
-        
-     }
-   
-   public void mostrarDisciplinas (){
-       
-        try{
+
+    }
+
+    public void mostrarDisciplinas() {
+
+        try {
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
-            ResultSet   rs = null;
-            
-            stmt = conexao.prepareStatement("SELECT \n" +
-"    disciplina.nome_disciplina,\n" +
-"    area.nome_area\n" +
-"FROM \n" +
-"    disciplina\n" +
-"INNER JOIN \n" +
-"    area ON disciplina.area_id = area.id_area;");
+            ResultSet rs = null;
+
+            stmt = conexao.prepareStatement("SELECT \n"
+                    + "    disciplina.nome_disciplina,\n"
+                    + "    area.nome_area\n"
+                    + "FROM \n"
+                    + "    disciplina\n"
+                    + "INNER JOIN \n"
+                    + "    area ON disciplina.area_id = area.id_area;");
             rs = stmt.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 Disciplina disciplinas = new Disciplina();
                 disciplinas.setId_disciplina(rs.getInt("id_disciplias"));
-                
-                
-                
-                
+
             }
             rs.close();
             stmt.close();
             conexao.close();
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
-            
+
         }
-        
-     }
+
+    }
 
 }
